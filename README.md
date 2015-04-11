@@ -1,4 +1,4 @@
-model-validation
-================
+dot-array-notation
+==================
 
-Experimental, see test/index.js for specs.
+Access object from string or set object values from string in dot array notation e.g. `something.else[0]`
