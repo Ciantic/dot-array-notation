@@ -14,6 +14,10 @@ export function getUsingDotArrayNotation(object: any, notation: string): any {
         var char = notation[i],
             next = notation[i + 1];
         if (char === "[") {
+            if (objectTrail.length) {
+                objectGetter = objectGetter[objectTrail]
+                objectTrail = "";
+            }
             arrayTrail = "";
             inArray = true;
             continue;
@@ -52,6 +56,10 @@ export function setUsingDotArrayNotation<T>(object: T, notation: string, val: an
             inArray = true;
             continue;
         } else if (char === "]") {
+            if (objectTrail.length) {
+                objectSetter = objectSetter[objectTrail]
+                objectTrail = "";
+            }
             inArray = false;
             if (typeof next === "undefined") {
                 objectSetter[parseInt(arrayTrail)] = val;

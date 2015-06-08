@@ -46,16 +46,23 @@ describe("Utils", function() {
         );
     });
     
+    it("get using array, array notation should work", () => {
+        assert.deepEqual(
+            V.getUsingDotArrayNotation([['a','b']], "[0][1]"),
+            'b'
+        );
+    });
+    
     it("get using dot array notation should work", () => {
         assert.deepEqual(
-            V.getUsingDotArrayNotation({'a' : ['b', 'c']}, "a.[1]"),
+            V.getUsingDotArrayNotation({'a' : ['b', 'c']}, "a[1]"),
             'c'
         );
     });
     
     it("get using dot array dot notation should work", () => {
         assert.deepEqual(
-            V.getUsingDotArrayNotation({'aaa' : ['bbbb', {'ccc' : 'ddd'}]}, "aaa.[1].ccc"),
+            V.getUsingDotArrayNotation({'aaa' : ['bbbb', {'ccc' : 'ddd'}]}, "aaa[1].ccc"),
             'ddd'
         );
     });
@@ -95,14 +102,14 @@ describe("Utils", function() {
     
     it("set using dot array notation should work", () => {
         assert.deepEqual(
-            V.setUsingDotArrayNotation({'a' : ['b', 'c']}, "a.[1]", "d"),
+            V.setUsingDotArrayNotation({'a' : ['b', 'c']}, "a[1]", "d"),
             {'a' : ['b', 'd']}
         );
     });
     
     it("set using dot array dot notation should work", () => {
         assert.deepEqual(
-            V.setUsingDotArrayNotation({'aaa' : ['bbbb', {'ccc' : 'ddd'}]}, "aaa.[1].ccc", "eee"),
+            V.setUsingDotArrayNotation({'aaa' : ['bbbb', {'ccc' : 'ddd'}]}, "aaa[1].ccc", "eee"),
             {'aaa' : ['bbbb', {'ccc' : 'eee'}]}
         );
     });

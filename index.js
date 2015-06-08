@@ -5,6 +5,10 @@ function getUsingDotArrayNotation(object, notation) {
     for (var i = 0; i < notation.length; i++) {
         var char = notation[i], next = notation[i + 1];
         if (char === "[") {
+            if (objectTrail.length) {
+                objectGetter = objectGetter[objectTrail];
+                objectTrail = "";
+            }
             arrayTrail = "";
             inArray = true;
             continue;
@@ -39,6 +43,10 @@ function setUsingDotArrayNotation(object, notation, val) {
             continue;
         }
         else if (char === "]") {
+            if (objectTrail.length) {
+                objectSetter = objectSetter[objectTrail];
+                objectTrail = "";
+            }
             inArray = false;
             if (typeof next === "undefined") {
                 objectSetter[parseInt(arrayTrail)] = val;
