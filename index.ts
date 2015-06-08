@@ -5,7 +5,7 @@ import _ = require("lodash");
  * See LICENSE for copying
  */
 
-export function getUsingDotArrayNotation(object: any, notation: string): any {
+export function get(object: any, notation: string): any {
     var objectGetter = object,
         objectTrail = "",
         arrayTrail = "",
@@ -42,7 +42,7 @@ export function getUsingDotArrayNotation(object: any, notation: string): any {
     return objectGetter;
 }
 
-export function setUsingDotArrayNotation<T>(object: T, notation: string, val: any): T {
+export function set<T>(object: T, notation: string, val: any): T {
     var o = _.cloneDeep(object),
         objectSetter = o,
         objectTrail = "",

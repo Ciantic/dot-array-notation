@@ -20,55 +20,55 @@ describe("Utils", function() {
     
     it("get using without dots should work", () => {
         assert.deepEqual(
-            V.getUsingDotArrayNotation(obj, "name"),
+            V.get(obj, "name"),
             "John Doe"
         );
     });
     
     it("get using dot notation should work", () => {
         assert.deepEqual(
-            V.getUsingDotArrayNotation(obj, "address.city"),
+            V.get(obj, "address.city"),
             "Someville"
         );
     });
     
     it("get using very deep dot notation should work", () => {
         assert.deepEqual(
-            V.getUsingDotArrayNotation({'a' : {'b' : {'c' : {'d' : 42}}}}, "a.b.c.d"),
+            V.get({'a' : {'b' : {'c' : {'d' : 42}}}}, "a.b.c.d"),
             42
         );
     });
     
     it("get using array notation should work", () => {
         assert.deepEqual(
-            V.getUsingDotArrayNotation(['a','b'], "[1]"),
+            V.get(['a','b'], "[1]"),
             'b'
         );
     });
     
     it("get using array, array notation should work", () => {
         assert.deepEqual(
-            V.getUsingDotArrayNotation([['a','b']], "[0][1]"),
+            V.get([['a','b']], "[0][1]"),
             'b'
         );
     });
     
     it("get using dot array notation should work", () => {
         assert.deepEqual(
-            V.getUsingDotArrayNotation({'a' : ['b', 'c']}, "a[1]"),
+            V.get({'a' : ['b', 'c']}, "a[1]"),
             'c'
         );
     });
     
     it("get using dot array dot notation should work", () => {
         assert.deepEqual(
-            V.getUsingDotArrayNotation({'aaa' : ['bbbb', {'ccc' : 'ddd'}]}, "aaa[1].ccc"),
+            V.get({'aaa' : ['bbbb', {'ccc' : 'ddd'}]}, "aaa[1].ccc"),
             'ddd'
         );
     });
     
     it("set using without dots should work", () => {
-        var copy = V.setUsingDotArrayNotation(obj, "name", "Not a Dummy");
+        var copy = V.set(obj, "name", "Not a Dummy");
         
         assert.deepEqual(copy,
             {
@@ -81,7 +81,7 @@ describe("Utils", function() {
     });
     
     it("set using dots should work", () => {
-        var copy = V.setUsingDotArrayNotation(obj, "address.city", "Otherville");
+        var copy = V.set(obj, "address.city", "Otherville");
         
         assert.deepEqual(copy,
             {
@@ -95,21 +95,21 @@ describe("Utils", function() {
     
     it("set using array notation should work", () => {
         assert.deepEqual(
-            V.setUsingDotArrayNotation(['a','b'], "[1]", "c"),
+            V.set(['a','b'], "[1]", "c"),
             ['a', 'c']
         );
     });
     
     it("set using dot array notation should work", () => {
         assert.deepEqual(
-            V.setUsingDotArrayNotation({'a' : ['b', 'c']}, "a[1]", "d"),
+            V.set({'a' : ['b', 'c']}, "a[1]", "d"),
             {'a' : ['b', 'd']}
         );
     });
     
     it("set using dot array dot notation should work", () => {
         assert.deepEqual(
-            V.setUsingDotArrayNotation({'aaa' : ['bbbb', {'ccc' : 'ddd'}]}, "aaa[1].ccc", "eee"),
+            V.set({'aaa' : ['bbbb', {'ccc' : 'ddd'}]}, "aaa[1].ccc", "eee"),
             {'aaa' : ['bbbb', {'ccc' : 'eee'}]}
         );
     });

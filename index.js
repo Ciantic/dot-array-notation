@@ -1,6 +1,6 @@
 /// <reference path="typings/lodash/lodash.d.ts" />
 var _ = require("lodash");
-function getUsingDotArrayNotation(object, notation) {
+function get(object, notation) {
     var objectGetter = object, objectTrail = "", arrayTrail = "", inArray = false;
     for (var i = 0; i < notation.length; i++) {
         var char = notation[i], next = notation[i + 1];
@@ -33,8 +33,8 @@ function getUsingDotArrayNotation(object, notation) {
     }
     return objectGetter;
 }
-exports.getUsingDotArrayNotation = getUsingDotArrayNotation;
-function setUsingDotArrayNotation(object, notation, val) {
+exports.get = get;
+function set(object, notation, val) {
     var o = _.cloneDeep(object), objectSetter = o, objectTrail = "", arrayTrail = "", inArray = false;
     for (var i = 0; i < notation.length; i++) {
         var char = notation[i], next = notation[i + 1];
@@ -72,4 +72,4 @@ function setUsingDotArrayNotation(object, notation, val) {
     }
     return o;
 }
-exports.setUsingDotArrayNotation = setUsingDotArrayNotation;
+exports.set = set;
